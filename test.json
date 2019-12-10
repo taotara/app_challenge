@@ -1,0 +1,45 @@
+
+
+{
+    "food": [
+      {
+        "id": 1,
+        "name": "Jollof rice",
+        "price": 200
+      },
+      {
+        "id": 2,
+        "name": "Fried rice",
+        "price": 300
+      },
+      {
+        "id": 3,
+        "name": "Spagetti",
+        "price": 100
+      },
+      {
+        "id": 4,
+        "name": "Yam portage",
+        "price": 150
+      }
+    ]
+  }
+
+
+  const url = 'foodies.json';
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+          let output = '';
+          data.forEach(function(food){
+              output += `
+              <tr>
+                <td>${food.name}</td>
+                <td>${food.price}</td>
+              </tr>
+              `;
+          });
+          document.getElementById('coin-list').innerHTML = output;
+      })
+      .catch(error => console.log('error is', error));
